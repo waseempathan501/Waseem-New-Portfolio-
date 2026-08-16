@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO CONFIGURATION -->
+    <title>Waseem Khan | Mr Hacker - Ethical Hacker & Web Developer Portfolio</title>
+    <meta name="description" content="Official portfolio of Waseem Khan (Mr Hacker) - Ethical Hacker, Web Developer & Student from Karachi, Pakistan. Explore projects in Python, Web Development and Cyber Security.">
+    <meta name="keywords" content="Waseem Khan, Mr Hacker, Waseem Hacker, Ethical Hacker Pakistan, Web Developer Karachi, Python Developer, Cyber Security">
+    <meta name="author" content="Waseem Khan">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0099cc">
+    <link rel="canonical" href="https://waseempathan501.github.io/Waseem.Portfolio/">
+
+    <!-- OPEN GRAPH / SOCIAL PREVIEW -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Waseem Khan | Mr Hacker - Ethical Hacker & Web Developer">
+    <meta property="og:description" content="Official portfolio of Waseem Khan (Mr Hacker) - Ethical Hacker, Web Developer & Student from Karachi, Pakistan.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/waseempathan501/Photo-link-/refs/heads/main/IMG-20260625-WA0003.jpg">
+    <meta property="og:url" content="https://waseempathan501.github.io/Waseem.Portfolio/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Waseem Khan | Mr Hacker">
+    <meta name="twitter:description" content="Ethical Hacker, Web Developer & Student from Karachi, Pakistan.">
+
+    <!-- FAVICON (profile photo, shown next to Google search results) -->
+    <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/waseempathan501/Photo-link-/refs/heads/main/IMG-20260625-WA0003.jpg">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/waseempathan501/Photo-link-/refs/heads/main/IMG-20260625-WA0003.jpg">
+
+    <!-- GOOGLE SCHEMA (SEO Connection) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "WASEEM KHAN",
+      "alternateName": "Mr Hacker",
+      "jobTitle": "Ethical Hacker & Web Developer",
+      "url": "https://waseempathan501.github.io/Waseem.Portfolio/",
+      "sameAs": [
+        "https://tiktok.com/@waseempathan902",
+        "https://tiktok.com/@waseempathan398",
+        "https://waseempathan501.github.io/Waseem.Portfolio/"
+      ]
+    }
+    </script>
+
+    <!-- Fonts and Icons (preconnect for speed) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* --- CSS VARIABLES --- */
+        body.light-theme {
+            --bg-color: #f0f2f5;
+            --header-bg: rgba(255, 255, 255, 0.85);
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-border: #d0d7de;
+            --text-primary: #24292f;
+            --text-secondary: #57606a;
+            --accent-primary: #0099cc;
+            --accent-secondary: #218838;
+            --accent-glow: rgba(0, 153, 204, 0.3);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --cursor-color: #0099cc;
+            --particles-color: rgba(0, 180, 216, 0.8);
+        }
+
+        body.dark-theme {
+            --bg-color: #0D1117;
+            --header-bg: rgba(13, 17, 23, 0.8);
+            --card-bg: rgba(22, 27, 34, 0.7);
+            --card-border: #30363d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent-primary: #00f0ff;
+            --accent-secondary: #00ff9d;
+            --accent-glow: rgba(0, 240, 255, 0.5);
+            --nav-bg: rgba(22, 27, 34, 0.95);
+            --cursor-color: #00f0ff;
+            --particles-color: rgba(255, 255, 255, 0.6);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            margin: 0;
+            cursor: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #hero-background-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+        }
+
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: var(--header-bg); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%); border-radius: 50%;
+            z-index: 5000; pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--cursor-color); }
+        .cursor-outline {
+            width: 40px; height: 40px;
+            border: 1px solid var(--cursor-color);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        body.hovering .cursor-outline {
+            width: 60px; height: 60px;
+            background-color: var(--accent-glow);
+            border-color: transparent;
+        }
+        @media (hover: none) {
+            .cursor-dot, .cursor-outline { display: none; }
+            body { cursor: auto; }
+        }
+
+        .hero-name {
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .typing-cursor {
+            display: inline-block; width: 3px; background-color: var(--accent-primary);
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .card-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem; width: 90%; max-width: 800px;
+            perspective: 1000px;
+        }
+
+        .tilt-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem; padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s ease;
+            position: relative; overflow: hidden;
+            text-decoration: none;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+        .tilt-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+            z-index: 1; opacity: 0; transition: opacity 0.3s;
+        }
+        .tilt-card:hover::before { opacity: 1; }
+        .tilt-card-content { transform: translateZ(30px); pointer-events: none; }
+
+        /* --- SCAN GRID (10 info boxes) — DANGER / TERMINAL MODE --- */
+        .recon-terminal {
+            width: 92%; max-width: 640px;
+            background: #05070a;
+            border: 1px solid #ff1744;
+            border-radius: 0.75rem;
+            box-shadow: 0 0 25px rgba(255, 23, 68, 0.35), 0 0 60px rgba(0, 255, 140, 0.08) inset;
+            overflow: hidden;
+        }
+        .recon-titlebar {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 0.8rem;
+            background: #0d1117;
+            border-bottom: 1px solid #ff1744;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px; color: #00ff9d;
+        }
+        .recon-dot { width: 9px; height: 9px; border-radius: 50%; }
+        .recon-titlebar .blink-tag {
+            margin-left: auto; color: #ff1744; font-weight: 700;
+            animation: blink 0.8s steps(1) infinite;
+            letter-spacing: 0.1em;
+        }
+
+        .scan-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: #ff174433;
+            padding: 1px;
+        }
+        @media (min-width: 640px) {
+            .scan-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+        .scan-box {
+            background: #05070a;
+            padding: 0.9rem 0.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .scan-box::after {
+            content: '';
+            position: absolute; left: 0; right: 0; top: -100%; height: 40%;
+            background: linear-gradient(180deg, transparent, rgba(0,255,140,0.35), transparent);
+            animation: scanline 2.4s linear infinite;
+            opacity: 0.8;
+        }
+        @keyframes scanline { 0% { top: -40%; } 100% { top: 100%; } }
+        .scan-box .scan-icon { font-size: 1.1rem; margin-bottom: 0.35rem; color: #ff1744; text-shadow: 0 0 8px rgba(255,23,68,0.8); }
+        .scan-box .scan-label {
+            font-size: 9px; letter-spacing: 0.08em; color: #6b7280;
+            font-family: 'Orbitron', sans-serif; text-transform: uppercase;
+        }
+        .scan-box .scan-value {
+            font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+            color: #00ff9d; text-shadow: 0 0 6px rgba(0,255,140,0.6);
+            margin-top: 2px; word-break: break-word;
+            animation: flicker 4s infinite;
+        }
+        @keyframes flicker {
+            0%, 96%, 100% { opacity: 1; }
+            97% { opacity: 0.4; }
+            98% { opacity: 1; }
+        }
+        .recon-footer {
+            font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #4b5563;
+            padding: 0.5rem 0.8rem; border-top: 1px solid #ff174433;
+            display: flex; justify-content: space-between;
+        }
+
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .bottom-nav {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: var(--nav-bg); backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 50px; padding: 0.8rem 2rem;
+            display: flex; gap: 2.5rem; z-index: 999;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .nav-item { color: var(--text-secondary); font-size: 1.3rem; transition: 0.3s; cursor: pointer; }
+        .nav-item:hover { color: var(--accent-primary); transform: translateY(-5px); }
+        .nav-item span { font-size: 0.6rem; display: block; margin-top: 4px; font-family: 'Orbitron'; }
+
+        #modal-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s;
+        }
+        #modal-container.active { opacity: 1; pointer-events: auto; }
+        .modal-content {
+            background: var(--bg-color); border: 1px solid var(--accent-primary);
+            padding: 2rem; border-radius: 1rem; max-width: 350px; width: 90%;
+            text-align: center; box-shadow: 0 0 30px var(--accent-glow);
+            transform: scale(0.8); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        #modal-container.active .modal-content { transform: scale(1); }
+    </style>
+</head>
+
+<body class="light-theme">
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <canvas id="hero-background-canvas"></canvas>
+
+    <header class="flex items-center justify-center h-16 shadow-lg">
+        <div class="w-full max-w-7xl px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2 hover-trigger">
+                <i class="fas fa-terminal text-[var(--accent-primary)] text-xl"></i>
+                <span class="font-[Orbitron] font-bold text-[var(--text-primary)] tracking-wider">WASEEM</span>
+            </div>
+            <button class="hover-trigger w-10 h-10 rounded-full border border-[var(--card-border)] text-[var(--text-secondary)] hover:text-[var(--accent-primary)] hover:border-[var(--accent-primary)] transition-all flex items-center justify-center" id="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex flex-col items-center pt-28 pb-32 w-full">
+
+        <div class="relative w-40 h-40 mb-6 group hover-trigger">
+            <div class="absolute inset-0 rounded-full border-2 border-dashed border-[var(--accent-primary)] animate-[spin_10s_linear_infinite]"></div>
+            <div class="absolute inset-0 rounded-full border-2 border-dashed border-[var(--accent-secondary)] animate-[spin_15s_linear_infinite_reverse] scale-110 opacity-50"></div>
+            <img alt="Waseem Khan - Ethical Hacker and Web Developer profile photo" width="160" height="160" class="w-full h-full rounded-full object-cover border-4 border-[var(--card-bg)] relative z-10 transition-transform group-hover:scale-95" src="https://raw.githubusercontent.com/waseempathan501/Photo-link-/refs/heads/main/IMG-20260625-WA0003.jpg" fetchpriority="high">
+        </div>
+
+        <h1 class="hero-name text-4xl md:text-5xl font-bold mb-2 text-center">WASEEM KHAN</h1>
+
+        <div class="text-[var(--text-secondary)] font-[Orbitron] text-lg md:text-xl h-8 mb-6 flex items-center gap-2">
+            <span>I am a</span>
+            <span class="text-[var(--accent-secondary)] font-bold" id="typing-text"></span><span class="typing-cursor">|</span>
+        </div>
+
+        <div class="flex gap-6 mb-6 z-10">
+            <a class="text-2xl text-[var(--text-secondary)] hover:text-[#E1306C] transition-transform hover:-translate-y-1 hover-trigger" href="https://tiktok.com/@waseempathan902" aria-label="TikTok profile 1"><i class="fab fa-tiktok"></i></a>
+            <a class="text-2xl text-[var(--text-secondary)] hover:text-[#0088cc] transition-transform hover:-translate-y-1 hover-trigger" href="https://tiktok.com/@waseempathan398" aria-label="TikTok profile 2"><i class="fab fa-tiktok"></i></a>
+            <a class="text-2xl text-[var(--text-secondary)] hover:text-[#24292f] transition-transform hover:-translate-y-1 hover-trigger" href="https://waseempathan501.github.io/Waseem.Portfolio/" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+        </div>
+
+        <a class="hover-trigger relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-bold text-white rounded-full bg-gradient-to-r from-[#0969da] to-[#005f8f] shadow-[0_0_20px_rgba(9,105,218,0.5)] transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(9,105,218,0.8)] mb-10 group" href="https://whatsapp.com/channel/0029VbD4m3ZFCCoWbOzY3x2S" target="_blank" rel="noopener">
+            <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+            <span class="relative flex items-center gap-2 font-[Orbitron]"><i class="fab fa-whatsapp"></i> JOIN CHANNEL</span>
+        </a>
+
+        <!-- SCAN GRID: 10 LIVE INFO BOXES — DANGER TERMINAL -->
+        <h2 class="text-2xl font-[Orbitron] text-[var(--text-primary)] mb-6 border-l-4 border-[#ff1744] pl-3 w-[90%] max-w-[800px] reveal">
+            <i class="fas fa-triangle-exclamation text-[#ff1744] mr-1"></i> System Recon
+        </h2>
+        <div class="recon-terminal mb-12 reveal">
+            <div class="recon-titlebar">
+                <span class="recon-dot" style="background:#ff5f56;"></span>
+                <span class="recon-dot" style="background:#ffbd2e;"></span>
+                <span class="recon-dot" style="background:#27c93f;"></span>
+                <span>root@waseem:~# ./recon.sh --target=visitor</span>
+                <span class="blink-tag">● LIVE</span>
+            </div>
+            <div class="scan-grid">
+                <div class="scan-box"><div class="scan-icon"><i class="fas fa-wifi"></i></div><div class="scan-label">Your IP</div><div class="scan-value" id="user-ip">Scanning...</div></div>
+                <div class="scan-box"><div class="scan-icon"><i class="fas fa-map-marker-alt"></i></div><div class="scan-label">Location</div><div class="scan-value" id="user-location">Locating...</div></div>
+                <div class="scan-box"><div class="scan-icon"><i class="fas fa-mobile-alt"></i></div><div class="scan-label">Device</div><div class="scan-value" id="user-device">Checking...</div></div>
+                <div class="scan-box"><div class="scan-icon"><i class="fab fa-windows"></i></div><div class="scan-label">OS</div><div class="scan-value" id="user-os">Checking...</div></div>
+                <div class="scan-box"><div class="scan-icon"><i class="fas fa-globe"></i></div><div class="scan-label">Browser</div><div class="scan-value" id="user-browser">Checking...</div></div>
+                <div class="scan-box"><div class="scan-icon"><i class="fas fa-desktop"></i></div><div class="scan-label">Screen</div><div class="scan-value" id="user-screen">Checking...</div></div>
+                <div class="scan-box"><div class="scan-icon"><i class="fas fa-battery-three-quarters"></i></div><div class="scan-label">Battery</div><div class="scan-value" id="user-battery">Checking...</div></div>
+                <div class="scan-box"><div class="scan-icon"><i class="fas fa-signal"></i></div><div class="scan-label">Network</div><div class="scan-value" id="user-network">Checking...</div></div>
+                <div class="scan-box"><div class="scan-icon"><i class="fas fa-language"></i></div><div class="scan-label">Language</div><div class="scan-value" id="user-lang">Checking...</div></div>
+                <div class="scan-box"><div class="scan-icon"><i class="fas fa-clock"></i></div><div class="scan-label">Timezone</div><div class="scan-value" id="user-tz">Checking...</div></div>
+            </div>
+            <div class="recon-footer">
+                <span>[STATUS: TARGET ACQUIRED]</span>
+                <span id="recon-time">00:00:00</span>
+            </div>
+        </div>
+
+        <h2 class="text-2xl font-[Orbitron] text-[var(--text-primary)] mb-6 border-l-4 border-[var(--accent-primary)] pl-3 w-[90%] max-w-[800px] reveal">Tech by WASEEM</h2>
+        <div class="card-grid mb-12 reveal">
+            <div class="tilt-card hover-trigger">
+                <div class="tilt-card-content">
+                    <i class="fab fa-python text-4xl text-yellow-500 mb-2"></i>
+                    <h3 class="font-bold text-[var(--text-primary)]">Python</h3>
+                </div>
+            </div>
+            <div class="tilt-card hover-trigger">
+                <div class="tilt-card-content">
+                    <i class="fas fa-user-secret text-4xl text-green-600 mb-2"></i>
+                    <h3 class="font-bold text-[var(--text-primary)]">Hacking</h3>
+                </div>
+            </div>
+            <div class="tilt-card hover-trigger">
+                <div class="tilt-card-content">
+                    <i class="fas fa-network-wired text-4xl text-[var(--accent-secondary)] mb-2"></i>
+                    <h3 class="font-bold text-[var(--text-primary)]">Networking</h3>
+                </div>
+            </div>
+            <div class="tilt-card hover-trigger">
+                <div class="tilt-card-content">
+                    <i class="fas fa-terminal text-4xl text-[var(--accent-primary)] mb-2"></i>
+                    <h3 class="font-bold text-[var(--text-primary)]">Bash</h3>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-2xl font-[Orbitron] text-[var(--text-primary)] mb-6 border-l-4 border-[#ff0055] pl-3 w-[90%] max-w-[800px] reveal">Top Projects</h2>
+        <div class="card-grid mb-10 reveal" style="grid-template-columns: 1fr;">
+            <a class="tilt-card hover-trigger" href="#" style="flex-direction: row; align-items: center; gap: 1.5rem; text-align: left;" target="_blank" rel="noopener">
+                <div class="tilt-card-content w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center text-2xl shadow-lg shrink-0">
+                    <i class="fas fa-rocket text-[var(--accent-primary)]"></i>
+                </div>
+                <div class="tilt-card-content flex-1">
+                    <h3 class="text-lg font-bold text-[var(--text-primary)]">All Projects</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">Here Is My All Gernated Websites.</p>
+                </div>
+                <div class="tilt-card-content"><i class="fas fa-external-link-alt text-[var(--text-secondary)]"></i></div>
+            </a>
+            <a class="tilt-card hover-trigger" href="#" style="flex-direction: row; align-items: center; gap: 1.5rem; text-align: left;">
+                <div class="tilt-card-content w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center text-2xl shadow-lg shrink-0">
+                    <i class="fas fa-envelope text-red-500"></i>
+                </div>
+                <div class="tilt-card-content flex-1">
+                    <h3 class="text-lg font-bold text-[var(--text-primary)]">Private Hub</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">Warning Don't Click It's Only For Devloper.</p>
+                </div>
+                <div class="tilt-card-content"><i class="fas fa-external-link-alt text-[var(--text-secondary)]"></i></div>
+            </a>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <div class="nav-item hover-trigger" onclick='window.scrollTo({top:0, behavior:"smooth"})'>
+            <i class="fas fa-user-astronaut"></i><span>Home</span>
+        </div>
+        <div class="nav-item hover-trigger" onclick='openModal("contact")'>
+            <i class="fas fa-envelope-open-text"></i><span>Contact</span>
+        </div>
+        <div class="nav-item hover-trigger" onclick='openModal("share")'>
+            <i class="fas fa-share-nodes"></i><span>Share</span>
+        </div>
+    </nav>
+
+    <div id="modal-container">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-[Orbitron] text-[var(--text-primary)]">Select Option</h3>
+                <i class="fas fa-times text-[var(--text-secondary)] cursor-pointer text-xl hover-trigger" onclick="closeModal()"></i>
+            </div>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // 1. THEME TOGGLE
+        const themeBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        themeBtn.addEventListener('click', () => {
+            if (body.classList.contains('light-theme')) {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+                themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // 2. BACKGROUND ANIMATION (lighter particle count for faster load/paint)
+        const canvas = document.getElementById("hero-background-canvas");
+        const ctx = canvas.getContext("2d");
+        let particlesArray;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size) {
+                this.x = x; this.y = y;
+                this.directionX = directionX; this.directionY = directionY;
+                this.size = size;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                const computedColor = getComputedStyle(document.body).getPropertyValue('--particles-color').trim();
+                ctx.fillStyle = computedColor;
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                this.x += this.directionX; this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = Math.min((canvas.height * canvas.width) / 13000, 120);
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 3) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * 1) - 0.5;
+                let directionY = (Math.random() * 1) - 0.5;
+                particlesArray.push(new Particle(x, y, directionX, directionY, size));
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particlesArray.length; i++) particlesArray[i].update();
+            connect();
+        }
+
+        function connect() {
+            const computedColor = getComputedStyle(document.body).getPropertyValue('--particles-color').trim();
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        ctx.strokeStyle = computedColor;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                canvas.width = innerWidth; canvas.height = innerHeight; init();
+            }, 200);
+        });
+
+        init();
+        animate();
+
+        // 3. TYPING ANIMATION
+        const textElement = document.getElementById('typing-text');
+        const phrases = ["Ethical Hacker", "Web Developer", "Student", "Tech Enthusiast"];
+        let phraseIndex = 0, charIndex = 0, isDeleting = false;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) { textElement.textContent = currentPhrase.substring(0, charIndex - 1); charIndex--; }
+            else { textElement.textContent = currentPhrase.substring(0, charIndex + 1); charIndex++; }
+            if (!isDeleting && charIndex === currentPhrase.length) { isDeleting = true; setTimeout(type, 2000); }
+            else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(type, 500); }
+            else { setTimeout(type, isDeleting ? 100 : 200); }
+        }
+        document.addEventListener('DOMContentLoaded', type);
+
+        // 4. CURSOR (skip on touch devices)
+        if (window.matchMedia('(hover: hover)').matches) {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX, posY = e.clientY;
+                cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+            });
+        }
+
+        // 5. TILT EFFECT
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const rotateX = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -10;
+                const rotateY = ((e.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 10;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            card.addEventListener('mouseleave', () => card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)');
+        });
+
+        // 6. MODAL
+        const modalContainer = document.getElementById('modal-container');
+        const modalBody = document.getElementById('modal-body');
+        function openModal(type) {
+            modalContainer.classList.add('active');
+            if (type === 'contact') {
+                modalBody.innerHTML = `
+                    <div class="grid gap-4">
+                        <a href="https://tiktok.com/@waseempathan902" class="p-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg text-[var(--text-primary)] hover:border-[var(--accent-primary)]"><i class="fab fa-tiktok text-[#0088cc] mr-2"></i> TikTok</a>
+                        <a href="mailto:waseempathan573737@gmail.com" class="p-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg text-[var(--text-primary)] hover:border-[var(--accent-primary)]"><i class="fas fa-envelope text-red-500 mr-2"></i> Email</a>
+                    </div>`;
+            } else if (type === 'share') {
+                modalBody.innerHTML = `
+                    <div class="grid gap-4"><button onclick="navigator.clipboard.writeText(window.location.href); closeModal(); alert('Link Copied!')" class="p-3 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg text-[var(--text-primary)] hover:border-[var(--accent-secondary)]"><i class="fas fa-copy text-green-500 mr-2"></i> Copy Link</button></div>`;
+            }
+        }
+        function closeModal() { modalContainer.classList.remove('active'); }
+        modalContainer.addEventListener('click', (e) => { if (e.target === modalContainer) closeModal(); });
+
+        // 7. SCROLL REVEAL
+        function revealOnScroll() {
+            document.querySelectorAll('.reveal').forEach(element => {
+                if (element.getBoundingClientRect().top < window.innerHeight - 100) element.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll, { passive: true });
+        document.addEventListener('DOMContentLoaded', revealOnScroll);
+
+        // 8. RECON TERMINAL LIVE CLOCK (purely cosmetic elapsed-time ticker)
+        (function reconClock() {
+            const el = document.getElementById('recon-time');
+            if (!el) return;
+            let seconds = 0;
+            setInterval(() => {
+                seconds++;
+                const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+                const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+                const s = String(seconds % 60).padStart(2, '0');
+                el.textContent = `${h}:${m}:${s}`;
+            }, 1000);
+        })();
+
+        // 9. SYSTEM RECON GRID — all values read from the visitor's own browser (client-side only)
+        (function scanSystem() {
+            // IP + Location via public IP API
+            fetch('https://ipapi.co/json/')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('user-ip').textContent = data.ip || 'Hidden';
+                    document.getElementById('user-location').textContent = (data.city && data.country_name) ? `${data.city}, ${data.country_name}` : 'Unknown';
+                })
+                .catch(() => {
+                    document.getElementById('user-ip').textContent = 'Hidden';
+                    document.getElementById('user-location').textContent = 'Unknown';
+                });
+
+            const ua = navigator.userAgent;
+
+            // Device type
+            const isMobile = /Mobi|Android|iPhone|iPad/i.test(ua);
+            document.getElementById('user-device').textContent = isMobile ? 'Mobile' : 'Desktop';
+
+            // OS
+            let os = 'Unknown';
+            if (/Windows/i.test(ua)) os = 'Windows';
+            else if (/Android/i.test(ua)) os = 'Android';
+            else if (/iPhone|iPad|iOS/i.test(ua)) os = 'iOS';
+            else if (/Mac OS/i.test(ua)) os = 'macOS';
+            else if (/Linux/i.test(ua)) os = 'Linux';
+            document.getElementById('user-os').textContent = os;
+
+            // Browser
+            let browser = 'Unknown';
+            if (/Edg\//i.test(ua)) browser = 'Edge';
+            else if (/Chrome\//i.test(ua) && !/Chromium/i.test(ua)) browser = 'Chrome';
+            else if (/Firefox\//i.test(ua)) browser = 'Firefox';
+            else if (/Safari\//i.test(ua) && !/Chrome/i.test(ua)) browser = 'Safari';
+            document.getElementById('user-browser').textContent = browser;
+
+            // Screen
+            document.getElementById('user-screen').textContent = `${screen.width}x${screen.height}`;
+
+            // Battery (Battery Status API — not supported in all browsers)
+            if (navigator.getBattery) {
+                navigator.getBattery().then(battery => {
+                    const update = () => {
+                        document.getElementById('user-battery').textContent = `${Math.round(battery.level * 100)}%${battery.charging ? ' ⚡' : ''}`;
+                    };
+                    update();
+                    battery.addEventListener('levelchange', update);
+                    battery.addEventListener('chargingchange', update);
+                }).catch(() => document.getElementById('user-battery').textContent = 'N/A');
+            } else {
+                document.getElementById('user-battery').textContent = 'N/A';
+            }
+
+            // Network
+            const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            document.getElementById('user-network').textContent = conn && conn.effectiveType ? conn.effectiveType.toUpperCase() : 'N/A';
+
+            // Language
+            document.getElementById('user-lang').textContent = (navigator.language || 'en').toUpperCase();
+
+            // Timezone
+            try {
+                document.getElementById('user-tz').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            } catch (e) {
+                document.getElementById('user-tz').textContent = 'Unknown';
+            }
+        })();
+    </script>
+
+</body>
+</html>
