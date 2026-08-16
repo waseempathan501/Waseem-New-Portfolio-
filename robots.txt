@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://waseempathan501.github.io/Waseem.Portfolio/sitemap.xml
+Sitemap: https://waseem-new-portfolio.vercel.app/sitemap.xml
